@@ -2,7 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
-const port = process.env.PORT || 3000;
+const portName = process.env.PORT || 3000;
 
 // initialize app
 var app = express();
@@ -59,6 +59,13 @@ app.get('/about', (req, res) => {
 	});
 });
 
+// Projects route
+app.get('/projects', (req, res) => {
+	res.render('projects.hbs', {
+		pageTitle: 'Projects'
+	});
+});
+
 // Bad route
 app.get('/bad', (req, res) => {
 	res.send({
@@ -67,6 +74,6 @@ app.get('/bad', (req, res) => {
 });
 
 // Watch for changes on 3000
-app.listen(port, () => {
-	console.log(`Server is up on ${port}`);
+app.listen(portName, () => {
+	console.log(`Server is up on ${portName}`);
 });
